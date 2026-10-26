@@ -31,6 +31,9 @@ void func(int connfd) {
     while ((buff[n++] = getchar()) != '\n')
       ;
     
+    // send written buffer to client
+    write(connfd, buff, sizeof(buff));
+    
     // if msg contains "Exit" then server exit and chat ended.
     if (strncmp("exit", buff, 4) == 0) {
       printf("Server exits...\n");
